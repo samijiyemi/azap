@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Pickmoni</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <% if (session && session.userId) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/payment/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/payment/send">Send Money</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/payment/fund-wallet">Fund Wallet</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/marketplace">Marketplace</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/loan">Loans</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/transactions">Transactions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/logout"
+            >Logout (<%= session.userName %>)</a
+          >
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/register">Register</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

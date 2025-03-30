@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+<div class="container mt-5">
+  <h2>Loans</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Request Loan</h3>
+      <form method="POST" action="/loan/request">
+        <div class="mb-3">
+          <label>Amount (NGN)</label>
+          <input type="number" name="amount" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Request Loan</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h3>Your Loans</h3>
+      <% loans.forEach(loan => { %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <p>
+            Amount: ₦<%= loan.amount %><br />
+            Status: <%= loan.status %><br />
+            Due: <%= loan.dueDate.toDateString() %>
+          </p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

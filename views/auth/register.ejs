@@ -1,0 +1,167 @@
+<%- include('../partials/header') %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h4 class="mb-0">Create Your Pickmoni Account</h4>
+        </div>
+        <div class="card-body">
+          <!-- Error Message Display -->
+          <% if (error) { %>
+          <div
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <%= error %>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          <% } %>
+
+          <!-- Registration Form -->
+          <form
+            method="POST"
+            action="/auth/register"
+            id="registerForm"
+            novalidate
+          >
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                value="<%= typeof name !== 'undefined' ? name : '' %>"
+                required
+              />
+              <div class="invalid-feedback">Please enter your full name</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                value="<%= typeof email !== 'undefined' ? email : '' %>"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter a valid email address
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                required
+              />
+              <div class="invalid-feedback">
+                Please enter a password (minimum 6 characters)
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                required
+              />
+              <div class="invalid-feedback">Passwords do not match</div>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-block">
+                Register
+              </button>
+            </div>
+          </form>
+
+          <!-- Login Link -->
+          <div class="text-center mt-3">
+            <p>Already have an account? <a href="/auth/login">Login here</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Client-side Validation Script -->
+<script>
+  (function () {
+    "use strict";
+
+    // Fetch the form we want to apply custom validation to
+    const form = document.getElementById("registerForm");
+
+    form.addEventListener(
+      "submit",
+      function (event) {
+        let isValid = true;
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+        // Check if form is valid
+        if (!form.checkValidity()) {
+          isValid = false;
+        }
+
+        // Custom password validation
+        if (password.length < 6) {
+          document.getElementById("password").classList.add("is-invalid");
+          isValid = false;
+        }
+
+        if (password !== confirmPassword) {
+          document
+            .getElementById("confirmPassword")
+            .classList.add("is-invalid");
+          isValid = false;
+        } else {
+          document
+            .getElementById("confirmPassword")
+            .classList.remove("is-invalid");
+        }
+
+        if (!isValid) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add("was-validated");
+      },
+      false
+    );
+
+    // Real-time password matching
+    document
+      .getElementById("confirmPassword")
+      .addEventListener("input", function () {
+        const password = document.getElementById("password").value;
+        if (this.value !== password) {
+          this.classList.add("is-invalid");
+        } else {
+          this.classList.remove("is-invalid");
+        }
+      });
+  })();
+</script>
+<%- include('../partials/footer') %>

@@ -1,0 +1,40 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Build and distribution files
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# MongoDB local data (if running locally)
+data/
+mongod.lock
+
+# Coverage reports (if you add testing)
+coverage/
+
+# Production-specific files
+*.pid
+*.seed

@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+<div class="container mt-5">
+  <h2>Send Money</h2>
+  <% if (error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+  <div class="card">
+    <div class="card-body">
+      <form method="POST" action="/payment/send">
+        <div class="mb-3">
+          <label for="recipientEmail" class="form-label">Recipient Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="recipientEmail"
+            name="recipientEmail"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="amount" class="form-label">Amount (NGN)</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="amount"
+            name="amount"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Send Money</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+<div class="container mt-5">
+  <h2>Welcome, <%= user.userName %></h2>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Account Balance</h5>
+          <p class="card-text display-4"><%= formatCurrency(user.balance) %></p>
+          <a href="/payment/send" class="btn btn-primary me-2">Send Money</a>
+          <a href="/payment/fund-wallet" class="btn btn-success me-2"
+            >Fund Wallet</a
+          >
+          <a href="/payment/receive" class="btn btn-secondary">Receive Money</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Recent Transactions</h5>
+          <% if (user.recentTransactions && user.recentTransactions.length > 0)
+          { %>
+          <ul class="list-group">
+            <% recentTransactions.forEach(transaction => { %>
+            <li class="list-group-item">
+              <%= formatDate(transaction.createdAt) %> - <%= transaction.type %>
+              - <%= formatCurrency(transaction.amount) %> (<%=
+              transaction.status %>) <% if (transaction.sender &&
+              transaction.sender._id.toString() === session.userId) { %> to <%=
+              transaction.recipient ? transaction.recipient.name : 'Unknown' %>
+              <% } else { %> from <%= transaction.sender ?
+              transaction.sender.name : 'Unknown' %> <% } %>
+            </li>
+            <% }) %>
+          </ul>
+          <% } else { %>
+          <p class="text-muted">No recent transactions</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>
