@@ -179,6 +179,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or support, reach out to [your-email@example.com](samijiyemi@gmail.com).
+For questions or support, reach out to [samijiyemi@gmail.com](samijiyemi@gmail.com).
 
 ---
