@@ -1,7 +1,3 @@
-Below is a comprehensive `README.md` file for your Azap payment app. It includes instructions for setup, usage, features, and additional notes to help users or developers understand and run the application.
-
----
-
 # Azap Payment App
 
 Azap is a full-featured payment application built with Node.js, Express, EJS, and Bootstrap. It integrates the Paystack payment gateway for sending and receiving money, offers a USD exchangers marketplace with Mapbox integration, provides loan request functionality, and includes user authentication with email verification. The app also generates QR codes for receiving payments, sends transaction receipts as PDFs, and has a placeholder for future NFC functionality.
@@ -183,6 +179,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or support, reach out to [your-email@example.com](mailto:your-email@example.com).
+For questions or support, reach out to [your-email@example.com](samijiyemi@gmail.com).
 
 ---
